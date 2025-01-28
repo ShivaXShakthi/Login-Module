@@ -7,8 +7,16 @@ const NavBar = () => {
     
     return (
         <div className="flex justify-between items-center bg-gray-800 text-white p-4">
-            <h1 className="text-2xl font-bold">User Module</h1>
+            <NavLink to="/" className="text-2xl font-bold">
+                    Home
+            </NavLink>
             <div className="flex space-x-4">
+                <NavLink to="/" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Option1
+                </NavLink>
+                <NavLink to="/option" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Option2
+                </NavLink>
                 <NavLink to="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Login
                 </NavLink>
