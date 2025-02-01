@@ -14,9 +14,6 @@ const NavBar = () => {
                 <NavLink to="/events" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Events
                 </NavLink>
-                <NavLink to="/videos" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Videos
-                </NavLink>
                 <NavLink to="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Login
                 </NavLink>

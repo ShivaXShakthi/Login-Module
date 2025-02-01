@@ -23,7 +23,9 @@ const Login = () => {
               'Accept': 'application/json'
             }
         });
-        console.log(response);
+        console.log(response.data.token);
+        localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("roles", response.data.roles);
         navigate("/");
     }
 
