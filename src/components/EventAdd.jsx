@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const EventAdd = () => {
   const navigate = useNavigate();
+  const [image, setImage] = useState(null);
   const [formData, setFormData] = useState({
     mela: "",
     prasanga: "",
@@ -12,9 +13,12 @@ const EventAdd = () => {
     eventDate: "",
     eventTime: "",
     eventType: "",
-    category: "",
-    image: "",
+    category: ""
   });
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   // Handle input change
   const handleChange = (e) => {
@@ -26,10 +30,14 @@ const EventAdd = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let payload = new FormData();
+      payload.append("eventDetails", JSON.stringify(formData));
+      payload.append("image", image); // Append the image file
+      console.log("Payload:", payload);
       const token = localStorage.getItem("authToken");
-      const response = await axios.post("/event", formData, {
+      const response = await axios.post("event", payload, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczODk5NTcwNSwiZXhwIjoxNzM4OTk4NzA1fQ.VlVF2j83kVO7f2Bug0XxSz9qActpkduwMda7aZsi-KA`
         },
       });
       console.log("Event created successfully:", response.data);
@@ -156,16 +164,9 @@ const EventAdd = () => {
 
           {/* Image URL Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Image URL</label>
-            <input
-              type="url"
-              name="image"
-              value={formData.image}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              required
-            />
-          </div>
+        <label>Image:</label>
+        <input type="file" name="image" onChange={handleImageChange} required />
+      </div>
 
           {/* Buttons */}
           <div className="flex justify-end space-x-4">

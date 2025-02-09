@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "./../utils/axios";
-import { use } from "react";
 
 const EventView = () => {
     const { eventId } = useParams(); // Get the event ID from the URL
@@ -30,8 +29,6 @@ const EventView = () => {
     // Handle Back Button Click
   const handleBack = () => {
     navigate(-1); // Navigate to the previous page
-    // Alternatively, you can navigate to a specific route:
-    // navigate("/events"); // Navigate to the events page
   };
   
     if (loading) {

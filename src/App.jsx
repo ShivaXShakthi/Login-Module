@@ -1,15 +1,15 @@
-import { useState } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import AppRoutes from './components/AppRoutes'
+import { AuthProvider } from './utils/AuthContext'
 
 function App() {
 
   return (
-    <>
-      <NavBar></NavBar>
-      <AppRoutes></AppRoutes>
-    </>
+    <AuthProvider>
+        <NavBar></NavBar>
+        <AppRoutes></AppRoutes>
+    </AuthProvider>
   )
 }
 

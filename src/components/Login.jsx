@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "./../utils/axios";
+import { AuthContext } from "../utils/AuthContext";
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const { authtoken, roles, login, logout } = useContext(AuthContext);
 
     const username = useRef(null);
     const password = useRef(null);
@@ -24,8 +26,7 @@ const Login = () => {
             }
         });
         console.log(response.data.token);
-        localStorage.setItem("authToken", response.data.token);
-        localStorage.setItem("roles", response.data.roles);
+        login(response.data.token, response.data.roles);
         navigate("/");
     }
 

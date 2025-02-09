@@ -24,7 +24,6 @@ const Signup = () => {
               'Accept': 'application/json'
             }
           });
-        console.log(response);
         navigate("/login");
     }
 

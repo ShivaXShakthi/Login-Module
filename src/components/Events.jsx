@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "./../utils/axios";
 import { useNavigate } from "react-router-dom";
-//import axios from "axios";
+import { AuthContext } from "../utils/AuthContext";
 
 const Events = () => {
+  const { authtoken, roles, login, logout } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
-  //const [userRole, setUserRole] = useState("user"); // Default role is 'user'
+  const [userRole, setUserRole] = useState(roles); // Default role is 'user'
   const navigate = useNavigate();
-
-  //const token = localStorage.getItem("authToken");
+  const [token, setToken] = useState(authtoken);
 
   // Fetch events from the backend
   useEffect(() => {
@@ -20,24 +20,11 @@ const Events = () => {
         console.error("Error fetching events:", error);
       }
     };
-
     fetchEvents();
-  }, []);
-
-  // Fetch user role (you can replace this with your actual logic)
-  // useEffect(() => {
-  //   const fetchUserRole = async () => {
-  //     // Simulate fetching user role
-  //     const role = "admin"; //localStorage.getItem("userRole") || "user"; // Replace with your logic
-  //     setUserRole(role);
-  //   };
-
-  //   fetchUserRole();
-  // }, []);
+  }, [token]);
 
   // Handle View Event
   const handleView = (eventId) => {
-    console.log("View Event:", eventId);
     navigate(`/eventview/${eventId}`); // Navigate to the event view page
     // Navigate to event details page or show a modal
   };
@@ -55,15 +42,12 @@ const Events = () => {
   const handleDelete = async (eventId) => {
     try {
       const token = localStorage.getItem("authToken");
-      console.log(token);
-      //let result = await axios.delete(`http://localhost:9090/event/${eventId}`,{
-        let result = await axios.delete(`event/${eventId}`,{
+      let result = await axios.delete(`event/${eventId}`,{
         headers: {
           Authorization: `Bearer ${token}` // Include the token in the request headers
         }
       }); // Replace with your backend API endpoint
       setEvents(events.filter((event) => event.eventId !== eventId)); // Remove the deleted event from the list
-      console.log("Event deleted successfully");
     } catch (error) {
       console.error("Error deleting event:", error);
     }
@@ -74,11 +58,11 @@ const Events = () => {
     navigate("/eventadd"); // Navigate to the add event page
   };
 
-  const idAdmin = () => {
-    if(localStorage.getItem("roles") == null){
+  const isAdmin = () => {
+    if(userRole == null){
       return false;
     }
-    return localStorage.getItem("roles").toString().includes("ROLE_ADMIN");
+    return userRole.includes("ROLE_ADMIN");
   }
 
 
@@ -87,7 +71,7 @@ const Events = () => {
     <>
     <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Events</h1>
-        {idAdmin() && (
+        {isAdmin() && (
           <button
             onClick={handleAddEvent}
             className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300"
@@ -134,7 +118,7 @@ const Events = () => {
           >
             View
           </button>
-          {idAdmin() && (
+          {isAdmin() && (
             <>
               <button
                 onClick={()=>handleEdit(event.eventId)}

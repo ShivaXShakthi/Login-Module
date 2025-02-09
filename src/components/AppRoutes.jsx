@@ -9,7 +9,6 @@ import EventEdit from "./EventEdit";
 import EventAdd from "./EventAdd";
 
 const AppRoutes = () => {
-    //create routes for login and signup
     return (
 
         <Routes>
