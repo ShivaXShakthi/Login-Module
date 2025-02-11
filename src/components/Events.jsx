@@ -14,7 +14,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:9090/events"); // Replace with your backend API endpoint
+        const response = await axios.get("events"); // Replace with your backend API endpoint
         setEvents(response.data);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -69,47 +69,49 @@ const Events = () => {
 
   return (
     <>
-    <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Events</h1>
+    <div className="flex justify-between items-center mb-6 px-4">
+        <h1 className="text-3xl font-bold"></h1>
         {isAdmin() && (
           <button
             onClick={handleAddEvent}
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300"
+            className="bg-gray-500 rounded-full text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300"
           >
             Add Event
           </button>
         )}
       </div>
-  <div className="flex flex-row flex-wrap gap-6 p-8 bg-gray-100">
+  <div className="flex flex-row flex-wrap gap-6 px-4">
     
     {events.map((event) => {
         return (
       <     div key={event.eventId} className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
+            <div className="w-full h-32">
             <img
-          className="w-full h-48 object-cover"
+          className="w-full h-full object-cover object-top"
           src={event.image}
           alt={event.mela}
         />
+            </div>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{event.mela}</div>
-          <p className="text-gray-700 text-base">
-            <strong>Prasanga:</strong> {event.prasanga}
-          </p>
+          <div className="font-bold text-xl mb-2 text-blue-400">{event.prasanga}</div>
+          {/* <p className="text-gray-700 text-base">
+            <strong>Mela:</strong> {event.mela}
+          </p> */}
           <p className="text-gray-700 text-base">
             <strong>Place:</strong> {event.place}
           </p>
-          <p className="text-gray-700 text-base">
+          {/* <p className="text-gray-700 text-base">
             <strong>Location:</strong> {event.location}
-          </p>
+          </p> */}
           <p className="text-gray-700 text-base">
             <strong>Date:</strong> {event.eventDate} at {event.eventTime}
           </p>
-          <p className="text-gray-700 text-base">
+          {/* <p className="text-gray-700 text-base">
             <strong>Type:</strong> {event.eventType}
-          </p>
-          <p className="text-gray-700 text-base">
+          </p> */}
+          {/* <p className="text-gray-700 text-base">
             <strong>Category:</strong> {event.category}
-          </p>
+          </p> */}
         </div>
         <div className="px-6 py-4 flex justify-between">
           <button

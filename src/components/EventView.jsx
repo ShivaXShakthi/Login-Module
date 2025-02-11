@@ -51,7 +51,7 @@ const EventView = () => {
           <img
             src={event.image}
             alt={event.mela}
-            className="w-full h-64 object-cover rounded-lg mb-6"
+            className="w-full h-full object-cover rounded-lg mb-6"
           />
           <div className="space-y-4">
             <p>
@@ -73,12 +73,14 @@ const EventView = () => {
               <strong>Category:</strong> {event.category}
             </p>
           </div>
+          <div className="flex justify-end mt-6">
           <button
           onClick={handleBack}
-          className="mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300"
+          className="mb-4 bg-black text-white px-6 py-2 rounded-full"
         >
           Back
         </button>
+        </div>
         </div>
         
       </div>
