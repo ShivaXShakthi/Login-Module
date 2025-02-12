@@ -69,7 +69,7 @@ const Events = () => {
 
   return (
     <>
-    <div className="flex justify-between items-center mb-6 px-4">
+    <div className="flex justify-between items-center mb-6 px-4 mt-28">
         <h1 className="text-3xl font-bold"></h1>
         {isAdmin() && (
           <button

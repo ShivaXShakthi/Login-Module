@@ -90,7 +90,7 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen mt-28">
             <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
                 <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">Create Account</h1>
                 {apiError && <p className="text-red-600 text-center mb-4">{apiError}</p>}
