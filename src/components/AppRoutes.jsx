@@ -7,6 +7,7 @@ import Events from "./Events";
 import EventView from "./EventView";
 import EventEdit from "./EventEdit";
 import EventAdd from "./EventAdd";
+import ForgotPassword from "./ForgotPassword";
 
 const AppRoutes = () => {
     return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path="/eventview/:eventId" element={<EventView />} />
             <Route path="/eventedit/:eventId" element={<EventEdit />} />
             <Route path="/eventadd" element={<EventAdd />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
 
 
