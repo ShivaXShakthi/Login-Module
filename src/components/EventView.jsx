@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "./../utils/axios";
+import { CircleChevronLeft  } from 'lucide-react';
 
 const EventView = () => {
   const { eventId } = useParams(); // Get the event ID from the URL
@@ -63,7 +64,7 @@ const EventView = () => {
             onClick={handleBack}
             className="bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-900 transition-all"
           >
-            Back
+            <CircleChevronLeft/>
           </button>
         </div>
       </div>
