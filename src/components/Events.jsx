@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "./../utils/axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../utils/AuthContext";
-import { Eye, Pencil, Trash2, BadgePlus, Search } from "lucide-react";
+import { Eye, Pencil, Trash2, BadgePlus, Search, Upload  } from "lucide-react";
 
 const Events = () => {
   const { authtoken, roles } = useContext(AuthContext);
@@ -44,6 +44,7 @@ const Events = () => {
 
   const handleAddEvent = () => navigate("/eventadd");
   const isAdmin = () => userRole.includes("ROLE_ADMIN");
+  const handledefaultImageUpload = () => navigate("/defaultimageupload");
 
   // Function to fetch search results
   const handleSearch = async () => {
@@ -96,12 +97,20 @@ const Events = () => {
 
   {/* Admin Button - Stays to the right */}
   {isAdmin() && (
+    <div className="flex gap-2">
     <button
-      onClick={handleAddEvent}
-      className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition"
+      onClick={handledefaultImageUpload}
+      className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
     >
-      <BadgePlus />
+      < Upload/>
     </button>
+    <button
+    onClick={handleAddEvent}
+    className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
+  >
+    <BadgePlus  />
+  </button>
+  </div>
   )}
 </div>
 
@@ -163,15 +172,15 @@ const Events = () => {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-96">
-          <p className="text-xl text-gray-600">No events available. Create one now!</p>
-          {isAdmin() && (
+          {isAdmin() ? <p className="text-xl text-gray-600">No events available. Create one now!</p> : <p className="text-xl text-gray-600">No events available.</p>}
+          {/* {isAdmin() && (
             <button
               onClick={handleAddEvent}
               className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
             >
               Create Event
             </button>
-          )}
+          )} */}
         </div>
       )}
     </div>

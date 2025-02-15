@@ -8,6 +8,7 @@ import EventEdit from "./EventEdit";
 import EventAdd from "./EventAdd";
 import ForgotPassword from "./ForgotPassword";
 import YakshaganaDiscover from "./YakshaganaDiscover";
+import DefaultImageUpload from "./DefaultImageUpload";
 
 const AppRoutes = () => {
     return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
             <Route path="/eventedit/:eventId" element={<EventEdit />} />
             <Route path="/eventadd" element={<EventAdd />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/defaultimageupload" element={<DefaultImageUpload />} />
         </Routes>
 
 
