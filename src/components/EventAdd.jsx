@@ -206,12 +206,21 @@ const EventAdd = () => {
             </>
           )}
 
+          <div className=" flex items-center justify-center gap-4">
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md"
           >
             Create Event
           </button>
+          <button
+          type="button"
+          onClick={() => navigate("/events")}
+            className="w-full text-white font-semibold py-3 px-4 rounded-md bg-gray-300 hover:bg-gray-400"
+          >
+            Cancel
+          </button>
+          </div>
         </form>
       </div>
     </div>

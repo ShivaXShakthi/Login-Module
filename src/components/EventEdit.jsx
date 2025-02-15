@@ -318,10 +318,10 @@ const EventEdit = () => {
               </>
             )}
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 mt-2">
               <button
                 type="submit"
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
               >
                 Save Changes
               </button>

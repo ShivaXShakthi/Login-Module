@@ -117,7 +117,7 @@ const DefaultImageUpload = () => {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition"
             disabled={loadingSaveCall}
           >
-            {loadingSaveCall ? "Saving..." : "Create Event"}
+            {loadingSaveCall ? "Saving..." : "Save default image"}
           </button>
           <button
             type="button"
